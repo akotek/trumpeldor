@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Leiningen: org.dhatim/fastexcel-reader:0.10.12">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/dhatim/fastexcel-reader/0.10.12/fastexcel-reader-0.10.12.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Leiningen: com.github.haifengl/smile-graph:2.5.0">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/haifengl/smile-graph/2.5.0/smile-graph-2.5.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
