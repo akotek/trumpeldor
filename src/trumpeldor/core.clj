@@ -9,14 +9,14 @@
 (def df (ds/->dataset "Dwelling Pivot 2010-2017.xlsx"))
 
 ;; explore data set
-(def shape (ds/shape df)) ; col X row
+(def shape (ds/shape df))
 
 (ds/column-names df)
 
 (->> df
      ds/columns
      (take 6)
-     (map #(meta %))) ; categorical data -- woo
+     (map #(meta %)))
 
 ;; some pre processing...
 ;; using clojure idioms!
@@ -40,12 +40,15 @@
      (filter #(not= (second shape) %)))
 
 ; ============================================================
-;; units for biz
+;; calc units for biz
+(def new-cols-s (map #(str "units_biz_" (str %)) (range 2010 2018)))
 
 (let [cols (ds/column-names ds)
-      units-total (ds/select-columns ds (filter #(s/starts-with? % "units_total") cols))
-      units-dwell (ds/select-columns ds (filter #(s/starts-with? % "units_dwell") cols))]
-  (dfn/- units-total units-dwell))
+      units-total (ds/columns (ds/select-columns ds (filter #(s/starts-with? % "units_total") cols)))
+      units-dwell (ds/columns (ds/select-columns ds (filter #(s/starts-with? % "units_dwell") cols)))
+      units-biz (map dfn/- units-total units-dwell)]
+  (-> (zipmap new-cols-s units-biz)
+      ds/->dataset))
 
 ;; units numbers over time
 
